@@ -1,0 +1,24 @@
+{
+  "spec": "add a requirements.txt for the project",
+  "commitMessage": "Add requirements.txt with project dependencies",
+  "stats": {
+    "inputTokens": 7693,
+    "cacheWriteTokens": 7202,
+    "cacheReadTokens": 36010,
+    "outputTokens": 699,
+    "totalTokens": null,
+    "cost": 0.025173,
+    "currency": "gbp",
+    "processingMillis": 20234,
+    "git": {
+      "filesChanged": 6,
+      "insertions": 193,
+      "deletions": 0,
+      "linesChanged": 193,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}
