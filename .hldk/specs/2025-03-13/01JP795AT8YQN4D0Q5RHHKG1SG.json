@@ -1,0 +1,24 @@
+{
+  "spec": "can you resolve the error: ERROR: Could not find a version that satisfies the requirement torch>=2.0.0 (from versions: none)\nERROR: No matching distribution found for torch>=2.0.0",
+  "commitMessage": "Switch to using find-links for PyTorch and specify version 2.1.0 \n\n\n",
+  "stats": {
+    "inputTokens": 11168,
+    "cacheWriteTokens": 7208,
+    "cacheReadTokens": 50456,
+    "outputTokens": 1348,
+    "totalTokens": null,
+    "cost": 0.040293,
+    "currency": "gbp",
+    "processingMillis": 36529,
+    "git": {
+      "filesChanged": 1,
+      "insertions": 2,
+      "deletions": 1,
+      "linesChanged": 2,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}
