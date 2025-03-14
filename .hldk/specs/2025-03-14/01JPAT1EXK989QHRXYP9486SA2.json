@@ -1,0 +1,24 @@
+{
+  "spec": "pyenv is still showing in the path despite there being no reference to pyenv in ~/.profile or ~/.bash_profile\nHere is the path\necho $PATH\n/usr/local/opt/ruby/bin:/Users/admin/.local/bin:/Users/admin/.jenv/shims:/Users/admin/.jenv/bin:/Library/Java/JavaVirtualMachines/graalvm-ce-java8-20.1.0/Contents/Home/bin:/usr/local/opt/ruby/bin:/Users/admin/.local/bin:/Users/admin/.jenv/shims:/Users/admin/.jenv/bin:/Library/Java/JavaVirtualMachines/graalvm-ce-java8-20.1.0/Contents/Home/bin:/usr/local/opt/ruby/bin:/Users/admin/.local/bin:/Users/admin/.jenv/shims:/Users/admin/.jenv/bin:/Library/Java/JavaVirtualMachines/graalvm-ce-java8-20.1.0/Contents/Home/bin:/usr/local/opt/ruby/bin:/Users/admin/.local/bin:/Users/admin/.jenv/shims:/Users/admin/.jenv/bin:/Library/Java/JavaVirtualMachines/graalvm-ce-java8-20.1.0/Contents/Home/bin:/Users/admin/.pyenv/shims:/Users/admin/.pyenv/bin:/usr/local/opt/ruby/bin:/Users/admin/.local/bin:/Users/admin/.jenv/shims:/Users/admin/.jenv/bin:/Library/Java/JavaVirtualMachines/graalvm-ce-java8-20.1.0/Contents/Home/bin:/Users/admin/.nvm/versions/node/v23.1.0/bin:/usr/local/opt/ruby/bin:/Users/admin/.local/bin:/Users/admin/.jenv/shims:/Users/admin/.jenv/bin:/Library/Java/JavaVirtualMachines/graalvm-ce-java8-20.1.0/Contents/Home/bin:/Users/admin/miniconda3/envs/py311/bin:/Users/admin/miniconda3/condabin:/Users/admin/.cargo/bin:/opt/local/bin:/opt/local/sbin:/Users/admin/.sdkman/candidates/quarkus/current/bin:/Users/admin/.sdkman/candidates/java/current/bin:/Users/admin/.sdkman/candidates/gradle/current/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Applications/Wireshark.app/Contents/MacOS:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/iTerm.app/Contents/Resources/utilities:/usr/local/opt/openvpn/sbin:/Users/admin/Tools:/Users/admin/Tools:/Users/admin/Tools/grails-2.3.7/bin:.:/usr/local/opt/openvpn/sbin:/Users/admin/Tools:/Users/admin/Tools:/Users/admin/Tools/grails-2.3.7/bin:/usr/local/opt/openvpn/sbin:/Users/admin/Tools:/Users/admin/Tools:/Users/admin/Tools/grails-2.3.7/bin:/usr/local/opt/openvpn/sbin:/Users/admin/Tools:/Users/admin/Tools:/Users/admin/Tools/grails-2.3.7/bin:/usr/local/opt/openvpn/sbin:/Users/admin/Tools:/Users/admin/Tools:/Users/admin/Tools/grails-2.3.7/bin:/usr/local/opt/openvpn/sbin:/Users/admin/Tools:/Users/admin/Tools:/Users/admin/Tools/grails-2.3.7/bin",
+  "commitMessage": "Add script to create a clean PATH environment variable \n",
+  "stats": {
+    "inputTokens": 60359,
+    "cacheWriteTokens": 6090,
+    "cacheReadTokens": 30450,
+    "outputTokens": 1079,
+    "totalTokens": null,
+    "cost": 0.1479465,
+    "currency": "gbp",
+    "processingMillis": 29873,
+    "git": {
+      "filesChanged": 1,
+      "insertions": 14,
+      "deletions": 0,
+      "linesChanged": 14,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}
