@@ -14,6 +14,6 @@ print("Text Completion Response:\n" + result[0]['generated_text'] + "\n")
 set_seed(1)
 
 # Generate text based on a prompt for instruction following
-test_result = generator("Write a poem about gravity", max_length=19, num_return_sequences=1, pad_token_id=generator.tokenizer.eos_token_id)
+test_result = generator("Write a poem about gravity", max_length=60, num_return_sequences=1, pad_token_id=generator.tokenizer.eos_token_id)
 # Display the generated text
 print("Instruction Following Response:\n" + test_result[0]['generated_text'])

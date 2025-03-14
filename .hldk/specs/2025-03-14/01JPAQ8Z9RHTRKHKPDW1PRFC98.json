@@ -1,0 +1,24 @@
+{
+  "spec": "cannot run the llm_tokenization_demo.py script due to PackagesNotFoundError: The following packages are not available from current channels:\n\n  - tiktoken",
+  "commitMessage": "Update dependencies and add tokenization demo script\n\n\n",
+  "stats": {
+    "inputTokens": 1866,
+    "cacheWriteTokens": 6090,
+    "cacheReadTokens": 12180,
+    "outputTokens": 432,
+    "totalTokens": null,
+    "cost": 0.0090585,
+    "currency": "gbp",
+    "processingMillis": 13103,
+    "git": {
+      "filesChanged": 3,
+      "insertions": 117,
+      "deletions": 4,
+      "linesChanged": 117,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}
