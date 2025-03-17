@@ -1,24 +1,8 @@
 from transformers import AutoTokenizer
-import os
-from dotenv import load_dotenv
 
-# Load environment variables from .env file
-load_dotenv()
-
-# Load tokenizers for models similar to ChatGPT and Llama
+# Load tokenizers for different models
 tokenizer_chatgpt = AutoTokenizer.from_pretrained("gpt2")  # Using GPT-2 as a proxy for ChatGPT
-
-# To use Llama 2, you need to:
-# 1. Get your token from https://huggingface.co/settings/tokens
-# 2. Set it as an environment variable:
-#    export HUGGING_FACE_TOKEN=your_token_here
-# 3. Accept the terms at: https://huggingface.co/meta-llama/Llama-2-7b
-
-token = os.getenv('HUGGING_FACE_TOKEN')
-tokenizer_llama = AutoTokenizer.from_pretrained(
-    "meta-llama/Llama-2-7b", 
-    token=token
-)  # Using official Llama 2 model
+tokenizer_opt = AutoTokenizer.from_pretrained("facebook/opt-350m")  # Using OPT model as an alternative
 
 # Sample text to tokenize
 text = "Tokenization can vary significantly between different models."
@@ -27,14 +11,14 @@ text = "Tokenization can vary significantly between different models."
 tokens_chatgpt = tokenizer_chatgpt.tokenize(text)
 token_ids_chatgpt = tokenizer_chatgpt.convert_tokens_to_ids(tokens_chatgpt)
 
-tokens_llama = tokenizer_llama.tokenize(text)
-token_ids_llama = tokenizer_llama.convert_tokens_to_ids(tokens_llama)
+tokens_opt = tokenizer_opt.tokenize(text)
+token_ids_opt = tokenizer_opt.convert_tokens_to_ids(tokens_opt)
 
 # Print the tokens and their corresponding IDs for both tokenizers
-print("ChatGPT-like Tokenizer:")
+print("ChatGPT-like Tokenizer (GPT-2):")
 print("Tokens:", tokens_chatgpt)
 print("Token IDs:", token_ids_chatgpt)
 
-print("\nLlama-like Tokenizer:")
-print("Tokens:", tokens_llama)
-print("Token IDs:", token_ids_llama)
+print("\nOPT Tokenizer:")
+print("Tokens:", tokens_opt)
+print("Token IDs:", token_ids_opt)

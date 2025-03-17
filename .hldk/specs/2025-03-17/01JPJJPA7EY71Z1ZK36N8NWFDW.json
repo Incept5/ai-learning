@@ -1,0 +1,24 @@
+{
+  "spec": "suggest a fix for this error when running simple_tokenization_02  or choose a public model:\nhuggingface_hub.utils._errors.GatedRepoError: 403 Client Error. (Request ID: Root=1-67d85c79-5dcee30326b834c8141ad970)\n\nCannot access gated repo for url https://huggingface.co/meta-llama/Llama-2-7b/resolve/main/tokenizer_config.json.\nAccess to model meta-llama/Llama-2-7b is restricted and you are not in the authorized list. Visit https://huggingface.co/meta-llama/Llama-2-7b to ask for access.",
+  "commitMessage": "Replace Llama-2 with public OPT model in tokenization example",
+  "stats": {
+    "inputTokens": 5163,
+    "cacheWriteTokens": 6125,
+    "cacheReadTokens": 18375,
+    "outputTokens": 1154,
+    "totalTokens": null,
+    "cost": 0.024599250000000003,
+    "currency": "gbp",
+    "processingMillis": 23432,
+    "git": {
+      "filesChanged": 1,
+      "insertions": 8,
+      "deletions": 24,
+      "linesChanged": 24,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}
