@@ -44,7 +44,7 @@ def demonstrate_tokenization():
     print("-" * 50)
 
     # Initialize T5 tokenizer with explicit model_max_length and legacy=False
-    t5_tokenizer = T5Tokenizer.from_pretrained("t5-base", model_max_length=512, legacy=False)
+    t5_tokenizer = T5Tokenizer.from_pretrained("t5-base", model_max_length=1024, legacy=False)
 
     for i, text in enumerate(example_texts):
         encoded = t5_tokenizer.encode(text)

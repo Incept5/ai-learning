@@ -1,0 +1,24 @@
+{
+  "spec": "I am running conda and have installed all the packages but get this error when running the python script:\n  File \"/Users/admin/Dev/incept5/ai-learning/llm-tokenization-demo.py\", line 161, in <module>\n    demonstrate_tokenization()\n  File \"/Users/admin/Dev/incept5/ai-learning/llm-tokenization-demo.py\", line 47, in demonstrate_tokenization\n    t5_tokenizer = T5Tokenizer.from_pretrained(\"t5-base\", model_max_length=1024, legacy=False)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/admin/anaconda3/lib/python3.11/site-packages/transformers/tokenization_utils_base.py\", line 1854, in from_pretrained\n    return cls._from_pretrained(\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/admin/anaconda3/lib/python3.11/site-packages/transformers/tokenization_utils_base.py\", line 2017, in _from_pretrained\n    tokenizer = cls(*init_inputs, **init_kwargs)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/admin/anaconda3/lib/python3.11/site-packages/transformers/models/t5/tokenization_t5.py\", line 194, in __init__\n    self.sp_model = self.get_spm_processor()\n                    ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/admin/anaconda3/lib/python3.11/site-packages/transformers/models/t5/tokenization_t5.py\", line 200, in get_spm_processor\n    model_pb2 = import_protobuf()\n                ^^^^^^^^^^^^^^^^^\n  File \"/Users/admin/anaconda3/lib/python3.11/site-packages/transformers/convert_slow_tokenizer.py\", line 40, in import_protobuf\n    return sentencepiece_model_pb2\n           ^^^^^^^^^^^^^^^^^^^^^^^\nUnboundLocalError: cannot access local variable 'sentencepiece_model_pb2' where it is not associated with a value",
+  "commitMessage": "Increase model_max_length for T5 tokenizer and update PyTorch and sentencepiece versions. \n\n\n",
+  "stats": {
+    "inputTokens": 2598,
+    "cacheWriteTokens": 6098,
+    "cacheReadTokens": 12196,
+    "outputTokens": 505,
+    "totalTokens": null,
+    "cost": 0.01152675,
+    "currency": "gbp",
+    "processingMillis": 15404,
+    "git": {
+      "filesChanged": 2,
+      "insertions": 4,
+      "deletions": 3,
+      "linesChanged": 4,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}
