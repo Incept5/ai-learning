@@ -1,0 +1,24 @@
+{
+  "spec": "ammend the simple_tokenization_02 python script so that it loads the HUGGING_FACE_TOKEN from .env in order to load the model",
+  "commitMessage": "Added python-dotenv support for loading HUGGING_FACE_TOKEN from .env file\n\n- Added python-dotenv to requirements.txt\n- Modified simple_tokenization_02.py to use load_dotenv\n- Added .env.example file with documentation",
+  "stats": {
+    "inputTokens": 9603,
+    "cacheWriteTokens": 0,
+    "cacheReadTokens": 42826,
+    "outputTokens": 1222,
+    "totalTokens": null,
+    "cost": 0.035354250000000004,
+    "currency": "gbp",
+    "processingMillis": 27822,
+    "git": {
+      "filesChanged": 3,
+      "insertions": 9,
+      "deletions": 1,
+      "linesChanged": 9,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

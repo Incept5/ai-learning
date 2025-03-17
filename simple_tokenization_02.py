@@ -1,5 +1,9 @@
 from transformers import AutoTokenizer
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Load tokenizers for models similar to ChatGPT and Llama
 tokenizer_chatgpt = AutoTokenizer.from_pretrained("gpt2")  # Using GPT-2 as a proxy for ChatGPT
