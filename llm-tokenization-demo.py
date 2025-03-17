@@ -40,20 +40,20 @@ def demonstrate_tokenization():
         print(f"Decoded tokens: {decoded}")
 
     # ==================== T5-style Tokenization ====================
-    print("\n\n2. T5-Style Tokenization")
-    print("-" * 50)
-
-    # Initialize T5 tokenizer with explicit model_max_length and legacy=False
-    t5_tokenizer = T5Tokenizer.from_pretrained("t5-base", model_max_length=1024, legacy=False)
-
-    for i, text in enumerate(example_texts):
-        encoded = t5_tokenizer.encode(text)
-        tokens = t5_tokenizer.convert_ids_to_tokens(encoded)
-
-        print(f"\nExample {i + 1}: '{text}'")
-        print(f"Token IDs: {encoded}")
-        print(f"Token count: {len(encoded)}")
-        print(f"Decoded tokens: {tokens}")
+    # print("\n\n2. T5-Style Tokenization")
+    # print("-" * 50)
+    #
+    # # Initialize T5 tokenizer with explicit model_max_length and legacy=False
+    # t5_tokenizer = T5Tokenizer.from_pretrained("t5-base", model_max_length=1024, legacy=False)
+    #
+    # for i, text in enumerate(example_texts):
+    #     encoded = t5_tokenizer.encode(text)
+    #     tokens = t5_tokenizer.convert_ids_to_tokens(encoded)
+    #
+    #     print(f"\nExample {i + 1}: '{text}'")
+    #     print(f"Token IDs: {encoded}")
+    #     print(f"Token count: {len(encoded)}")
+    #     print(f"Decoded tokens: {tokens}")
 
     # ==================== BERT-style Tokenization ====================
     print("\n\n3. BERT-Style Tokenization")
@@ -79,7 +79,7 @@ def demonstrate_tokenization():
     token_counts = {
         'Text': [f"Example {i + 1}" for i in range(len(example_texts))],
         'GPT2': [len(gpt2_tokenizer.encode(text)) for text in example_texts],
-        'T5': [len(t5_tokenizer.encode(text)) for text in example_texts],
+        # 'T5': [len(t5_tokenizer.encode(text)) for text in example_texts],
         'BERT': [len(bert_tokenizer.encode(text)) for text in example_texts]
     }
 
@@ -91,7 +91,7 @@ def demonstrate_tokenization():
     width = 0.25
 
     plt.bar(x - width, token_df['GPT2'], width, label='GPT2')
-    plt.bar(x, token_df['T5'], width, label='T5')
+    # plt.bar(x, token_df['T5'], width, label='T5')
     plt.bar(x + width, token_df['BERT'], width, label='BERT')
 
     plt.xlabel('Examples')
@@ -121,11 +121,11 @@ def demonstrate_tokenization():
         gpt2_tokens = gpt2_tokenizer.encode(case)
         print(f"'{case}' → {len(gpt2_tokens)} tokens: {[gpt2_tokenizer.decode([t]) for t in gpt2_tokens]}")
 
-    print("\nT5 Tokenization of Special Cases:")
-    for case in special_cases:
-        t5_encoded = t5_tokenizer.encode(case)
-        t5_tokens = t5_tokenizer.convert_ids_to_tokens(t5_encoded)
-        print(f"'{case}' → {len(t5_encoded)} tokens: {t5_tokens}")
+    # print("\nT5 Tokenization of Special Cases:")
+    # for case in special_cases:
+    #     t5_encoded = t5_tokenizer.encode(case)
+    #     t5_tokens = t5_tokenizer.convert_ids_to_tokens(t5_encoded)
+    #     print(f"'{case}' → {len(t5_encoded)} tokens: {t5_tokens}")
 
     print("\nBERT Tokenization of Special Cases:")
     for case in special_cases:
@@ -148,9 +148,9 @@ def demonstrate_tokenization():
     gpt2_tokens = gpt2_tokenizer.tokenize(example)
     print(f"Tokens: {gpt2_tokens}")
 
-    print("\nT5 (SentencePiece):")
-    t5_tokens = t5_tokenizer.tokenize(example)
-    print(f"Tokens: {t5_tokens}")
+    # print("\nT5 (SentencePiece):")
+    # t5_tokens = t5_tokenizer.tokenize(example)
+    # print(f"Tokens: {t5_tokens}")
 
     print("\nBERT (WordPiece):")
     bert_tokens = bert_tokenizer.tokenize(example)
