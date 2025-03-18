@@ -1,55 +1,72 @@
 import numpy as np
 import argparse
-from sentence_transformers import SentenceTransformer
+import torch
+from transformers import AutoTokenizer, AutoModel
 from sklearn.metrics.pairwise import cosine_similarity
 from tabulate import tabulate
 
-
-# Dictionary of recommended embedding models with their descriptions
-EMBEDDING_MODELS = {
-    "all-MiniLM-L6-v2": "Fast and efficient general-purpose model (384 dimensions)",
-    "all-mpnet-base-v2": "High quality general-purpose model (768 dimensions)",
-    "all-distilroberta-v1": "Distilled RoBERTa model with good performance (768 dimensions)",
-    "paraphrase-multilingual-MiniLM-L12-v2": "Multilingual model supporting 50+ languages (384 dimensions)",
-    "multi-qa-mpnet-base-dot-v1": "Optimized for semantic search and question answering (768 dimensions)",
-    "all-MiniLM-L12-v2": "Larger version of MiniLM with better performance (384 dimensions)",
-    "msmarco-distilbert-base-v4": "Optimized for information retrieval tasks (768 dimensions)",
-    "paraphrase-albert-small-v2": "Lightweight model with good performance (768 dimensions)",
-    "stsb-roberta-large": "High-quality model optimized for semantic textual similarity (1024 dimensions)",
-    "gtr-t5-large": "T5-based model with strong performance (768 dimensions)"
+# Dictionary of recommended Hugging Face embedding models with their descriptions
+HF_EMBEDDING_MODELS = {
+    "bert-base-uncased": "Original BERT base model (768 dimensions)",
+    "roberta-base": "RoBERTa base model with improved training (768 dimensions)",
+    "distilbert-base-uncased": "Distilled version of BERT, smaller and faster (768 dimensions)",
+    "albert-base-v2": "A Lite BERT with parameter reduction techniques (768 dimensions)",
+    "xlm-roberta-base": "Multilingual RoBERTa model supporting 100 languages (768 dimensions)",
+    "microsoft/mpnet-base": "MPNet with better performance than BERT/RoBERTa (768 dimensions)",
+    "google/electra-small-discriminator": "Smaller, efficient ELECTRA model (256 dimensions)",
+    "sentence-transformers/all-MiniLM-L6-v2": "Optimized for sentence embeddings (384 dimensions)",
+    "intfloat/e5-small-v2": "E5 model optimized for text embeddings (384 dimensions)",
+    "facebook/contriever-msmarco": "Contriever model fine-tuned on MS MARCO (768 dimensions)"
 }
 
-
-def get_embeddings(sentences, model_name="all-MiniLM-L6-v2"):
+def mean_pooling(model_output, attention_mask):
     """
-    Generate embeddings for a list of sentences using a pre-trained model.
+    Mean pooling to get sentence embeddings from token embeddings
+    """
+    token_embeddings = model_output[0]  # First element of model_output contains token embeddings
+    input_mask_expanded = attention_mask.unsqueeze(-1).expand(token_embeddings.size()).float()
+    return torch.sum(token_embeddings * input_mask_expanded, 1) / torch.clamp(input_mask_expanded.sum(1), min=1e-9)
 
+def get_huggingface_embeddings(sentences, model_name="bert-base-uncased"):
+    """
+    Generate embeddings for a list of sentences using Hugging Face models.
+    
     Args:
         sentences (list): List of sentences to generate embeddings for
-        model_name (str): Name of the Sentence Transformer model to use
-
+        model_name (str): Name of the Hugging Face model to use
+        
     Returns:
         np.ndarray: Array of embeddings, one per sentence
     """
     # Check if model exists in our recommended list
-    if model_name not in EMBEDDING_MODELS and model_name != "custom":
+    if model_name not in HF_EMBEDDING_MODELS and not model_name.startswith("custom:"):
         print(f"Warning: Using model '{model_name}' which is not in the recommended list.")
         print("Available recommended models:")
-        for model, desc in EMBEDDING_MODELS.items():
+        for model, desc in HF_EMBEDDING_MODELS.items():
             print(f"  - {model}: {desc}")
     
-    # Load the model
-    model = SentenceTransformer(model_name)
+    # Load tokenizer and model
+    print(f"Loading model: {model_name}")
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    model = AutoModel.from_pretrained(model_name)
     
-    # Print model info
-    print(f"Using model: {model_name}")
-    print(f"Embedding dimensions: {model.get_sentence_embedding_dimension()}")
-
-    # Generate embeddings
-    embeddings = model.encode(sentences)
-
-    return embeddings
-
+    # Move model to GPU if available
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    model = model.to(device)
+    print(f"Using device: {device}")
+    
+    # Tokenize sentences
+    encoded_input = tokenizer(sentences, padding=True, truncation=True, return_tensors='pt').to(device)
+    
+    # Compute token embeddings
+    with torch.no_grad():
+        model_output = model(**encoded_input)
+    
+    # Perform mean pooling
+    sentence_embeddings = mean_pooling(model_output, encoded_input['attention_mask'])
+    
+    # Convert to numpy and return
+    return sentence_embeddings.cpu().numpy()
 
 def calculate_similarity(embedding1, embedding2):
     """
@@ -69,26 +86,24 @@ def calculate_similarity(embedding1, embedding2):
     # Calculate and return similarity
     return cosine_similarity(e1, e2)[0][0]
 
-
 def list_models():
-    """Print all available recommended embedding models with descriptions"""
-    print("\nAvailable embedding models:")
+    """Print all available recommended Hugging Face embedding models with descriptions"""
+    print("\nAvailable Hugging Face embedding models:")
     print("-" * 80)
-    for model, desc in EMBEDDING_MODELS.items():
+    for model, desc in HF_EMBEDDING_MODELS.items():
         print(f"{model}")
         print(f"    {desc}")
     print("-" * 80)
 
-
 def main():
     # Set up argument parser
-    parser = argparse.ArgumentParser(description="Sentence embedding similarity demo")
-    parser.add_argument("--model", type=str, default="all-MiniLM-L6-v2",
-                        help="Embedding model to use")
+    parser = argparse.ArgumentParser(description="Hugging Face Embedding Similarity Demo")
+    parser.add_argument("--model", type=str, default="bert-base-uncased",
+                        help="Hugging Face model to use for embeddings")
     parser.add_argument("--list-models", action="store_true",
                         help="List all available recommended models and exit")
     parser.add_argument("--custom-model", type=str, 
-                        help="Use a custom model not in the recommended list")
+                        help="Use a custom model from Hugging Face Hub")
     args = parser.parse_args()
     
     # If --list-models flag is provided, list models and exit
@@ -118,9 +133,14 @@ def main():
     ]
 
     # Get embeddings for all sentences
-    print("Loading model and generating embeddings...")
+    print("Generating Hugging Face embeddings...")
     all_sentences = similar_pair + dissimilar_pair + mixed_examples
-    all_embeddings = get_embeddings(all_sentences, model_name=model_name)
+    
+    try:
+        all_embeddings = get_huggingface_embeddings(all_sentences, model_name=model_name)
+    except Exception as e:
+        print(f"Error: {e}")
+        return
 
     # Calculate and display similarity for the provided examples
     print("\n--- Example Pairs ---")
@@ -172,9 +192,8 @@ def main():
     for i, sent in enumerate(mixed_examples):
         print(f"Sentence {i + 1}: {sent}")
 
-
 if __name__ == "__main__":
     main()
-    print("\nTip: Run with --list-models to see all available embedding models")
-    print("Example: python embeddings_demo.py --model all-mpnet-base-v2")
-    print("Example with custom model: python embeddings_demo.py --custom-model paraphrase-multilingual-mpnet-base-v2")
+    print("\nTip: Run with --list-models to see all available recommended Hugging Face models")
+    print("Example: python huggingface_embeddings_demo.py --model roberta-base")
+    print("Example with custom model: python huggingface_embeddings_demo.py --custom-model intfloat/multilingual-e5-large")

@@ -1,76 +1,80 @@
 import numpy as np
+import os
+import argparse
+from dotenv import load_dotenv
+from sklearn.metrics.pairwise import cosine_similarity
 from tabulate import tabulate
 import requests
-import argparse
-import sys
-from sklearn.metrics.pairwise import cosine_similarity
 
-# Dictionary of recommended Ollama embedding models with their descriptions
-OLLAMA_EMBEDDING_MODELS = {
-    "all-minilm": "Default embedding model in Ollama (384 dimensions)",
-    "nomic-embed-text": "Nomic AI's text embedding model (768 dimensions)",
-    "mxbai-embed-large": "MxbAI's large embedding model (1024 dimensions)",
-    "ember": "Ember embedding model (1024 dimensions)",
-    "e5": "E5 embedding model (1024 dimensions)",
-    "bge": "BGE embedding model (768 dimensions)",
-    "gte": "GTE embedding model (768 dimensions)"
+# Load environment variables from .env file
+load_dotenv()
+
+# Dictionary of OpenAI embedding models with their descriptions
+OPENAI_EMBEDDING_MODELS = {
+    "text-embedding-3-small": "Smallest and most cost-effective model (1536 dimensions)",
+    "text-embedding-3-large": "Most powerful model for high accuracy (3072 dimensions)",
+    "text-embedding-ada-002": "Legacy model, good balance of performance and cost (1536 dimensions)"
 }
 
-def get_ollama_embedding(text, model="all-minilm"):
+def get_openai_embeddings(sentences, model_name="text-embedding-3-small"):
     """
-    Get embeddings from Ollama API
-    
-    Args:
-        text (str): Text to embed
-        model (str): Ollama model to use for embeddings
-        
-    Returns:
-        list: Embedding vector
-    """
-    try:
-        response = requests.post("http://localhost:11434/api/embeddings",
-                                json={"model": model, "prompt": text})
-        response.raise_for_status()  # Raise exception for HTTP errors
-        return response.json()["embedding"]
-    except requests.exceptions.ConnectionError:
-        print("Error: Could not connect to Ollama server.")
-        print("Make sure Ollama is running on http://localhost:11434")
-        print("Install Ollama from: https://ollama.com/")
-        sys.exit(1)
-    except Exception as e:
-        print(f"Error getting embedding: {e}")
-        if "model" in str(e).lower():
-            print(f"Model '{model}' may not be available. Try pulling it with:")
-            print(f"  ollama pull {model}")
-        sys.exit(1)
-
-def get_ollama_embeddings(sentences, model="all-minilm"):
-    """
-    Generate embeddings for a list of sentences using Ollama.
+    Generate embeddings for a list of sentences using OpenAI's embedding models.
     
     Args:
         sentences (list): List of sentences to generate embeddings for
-        model (str): Name of the Ollama model to use
+        model_name (str): Name of the OpenAI embedding model to use
         
     Returns:
         np.ndarray: Array of embeddings, one per sentence
     """
+    # Check for API key
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        raise ValueError("OpenAI API key not found. Set the OPENAI_API_KEY environment variable.")
+    
     # Check if model exists in our recommended list
-    if model not in OLLAMA_EMBEDDING_MODELS:
-        print(f"Warning: Using model '{model}' which is not in the recommended list.")
-        print("Available recommended models:")
-        for m, desc in OLLAMA_EMBEDDING_MODELS.items():
-            print(f"  - {m}: {desc}")
+    if model_name not in OPENAI_EMBEDDING_MODELS:
+        print(f"Warning: Using model '{model_name}' which is not in the recommended list.")
+        print("Available OpenAI embedding models:")
+        for model, desc in OPENAI_EMBEDDING_MODELS.items():
+            print(f"  - {model}: {desc}")
     
-    print(f"Using Ollama model: {model}")
+    # Print model info
+    print(f"Using OpenAI model: {model_name}")
     
-    # Get embeddings for each sentence
-    embeddings = []
+    # API endpoint
+    url = "https://api.openai.com/v1/embeddings"
+    
+    # Headers
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {api_key}"
+    }
+    
+    # Store all embeddings
+    all_embeddings = []
+    
+    # Process each sentence
     for sentence in sentences:
-        embedding = get_ollama_embedding(sentence, model)
-        embeddings.append(embedding)
+        # Request body
+        data = {
+            "input": sentence,
+            "model": model_name
+        }
+        
+        # Make the API call
+        response = requests.post(url, headers=headers, json=data)
+        
+        # Check for errors
+        if response.status_code != 200:
+            raise Exception(f"Error from OpenAI API: {response.text}")
+        
+        # Extract embedding
+        embedding = response.json()["data"][0]["embedding"]
+        all_embeddings.append(embedding)
     
-    return np.array(embeddings)
+    # Convert to numpy array
+    return np.array(all_embeddings)
 
 def calculate_similarity(embedding1, embedding2):
     """
@@ -91,22 +95,21 @@ def calculate_similarity(embedding1, embedding2):
     return cosine_similarity(e1, e2)[0][0]
 
 def list_models():
-    """Print all available recommended Ollama embedding models with descriptions"""
-    print("\nAvailable Ollama embedding models:")
+    """Print all available OpenAI embedding models with descriptions"""
+    print("\nAvailable OpenAI embedding models:")
     print("-" * 80)
-    for model, desc in OLLAMA_EMBEDDING_MODELS.items():
+    for model, desc in OPENAI_EMBEDDING_MODELS.items():
         print(f"{model}")
         print(f"    {desc}")
     print("-" * 80)
-    print("\nNote: You may need to pull these models first with 'ollama pull <model>'")
 
 def main():
     # Set up argument parser
-    parser = argparse.ArgumentParser(description="Ollama Embedding Similarity Demo")
-    parser.add_argument("--model", type=str, default="all-minilm",
-                        help="Ollama model to use for embeddings")
+    parser = argparse.ArgumentParser(description="OpenAI Embedding Similarity Demo")
+    parser.add_argument("--model", type=str, default="text-embedding-3-small",
+                        help="OpenAI embedding model to use")
     parser.add_argument("--list-models", action="store_true",
-                        help="List all available recommended models and exit")
+                        help="List all available OpenAI models and exit")
     args = parser.parse_args()
     
     # If --list-models flag is provided, list models and exit
@@ -133,13 +136,16 @@ def main():
     ]
 
     # Get embeddings for all sentences
-    print("Generating Ollama embeddings...")
+    print("Generating OpenAI embeddings...")
     all_sentences = similar_pair + dissimilar_pair + mixed_examples
     
     try:
-        all_embeddings = get_ollama_embeddings(all_sentences, model=args.model)
+        all_embeddings = get_openai_embeddings(all_sentences, model_name=args.model)
     except Exception as e:
         print(f"Error: {e}")
+        print("\nTo use OpenAI embeddings, you need to:")
+        print("1. Create a .env file in the project root")
+        print("2. Add your OpenAI API key: OPENAI_API_KEY=your_api_key_here")
         return
 
     # Calculate and display similarity for the provided examples
@@ -194,5 +200,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-    print("\nTip: Run with --list-models to see all available Ollama embedding models")
-    print("Example: python ollama_embedding.py --model nomic-embed-text")
+    print("\nTip: Run with --list-models to see all available OpenAI embedding models")
+    print("Example: python openai_embeddings_demo.py --model text-embedding-3-large")

@@ -1,0 +1,24 @@
+{
+  "spec": "suggest different embedding models to try out for embeddings_demo.py",
+  "commitMessage": "Add support for multiple embedding models with comprehensive demos\n\n- Enhanced embeddings_demo.py to support multiple SentenceTransformers models\n- Added huggingface_embeddings_demo.py for direct Hugging Face Transformers models\n- Added openai_embeddings_demo.py for OpenAI embedding models\n- Enhanced ollama_embedding.py to support multiple Ollama models\n- Added EMBEDDING_MODELS.md with comprehensive documentation on all models\n- Added command-line arguments for model selection in all demos",
+  "stats": {
+    "inputTokens": 91463,
+    "cacheWriteTokens": 6139,
+    "cacheReadTokens": 73668,
+    "outputTokens": 11519,
+    "totalTokens": null,
+    "cost": 0.3353805,
+    "currency": "gbp",
+    "processingMillis": 178821,
+    "git": {
+      "filesChanged": 5,
+      "insertions": 811,
+      "deletions": 22,
+      "linesChanged": 811,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}
