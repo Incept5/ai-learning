@@ -1,0 +1,24 @@
+{
+  "spec": "suggest different tokenization models to use to test out tokenization and add a readme to explain it similar to embedding_models.md",
+  "commitMessage": "Add comprehensive tokenization models guide and demo scripts\n\n- Created TOKENIZATION_MODELS.md with detailed information about tokenization models\n- Added tokenization_comparison.py for comparing different tokenization models\n- Added tiktoken_demo.py for demonstrating OpenAI's tokenization\n- Added sentencepiece_demo.py for direct SentencePiece tokenization\n- Updated requirements.txt to include tiktoken and argparse",
+  "stats": {
+    "inputTokens": 121866,
+    "cacheWriteTokens": 6203,
+    "cacheReadTokens": 74436,
+    "outputTokens": 11805,
+    "totalTokens": null,
+    "cost": 0.40700475,
+    "currency": "gbp",
+    "processingMillis": 179733,
+    "git": {
+      "filesChanged": 17,
+      "insertions": 947,
+      "deletions": 16,
+      "linesChanged": 947,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}
