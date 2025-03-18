@@ -1,0 +1,458 @@
+[
+  {
+    "model": "gpt2",
+    "text_id": 0,
+    "token_count": 13,
+    "tokens": [
+      "Token",
+      "ization",
+      "\u0120is",
+      "\u0120the",
+      "\u0120first",
+      "\u0120step",
+      "\u0120in",
+      "\u0120processing",
+      "\u0120text",
+      "\u0120for",
+      "..."
+    ],
+    "time_ms": 2.7549266815185547
+  },
+  {
+    "model": "bert-base-uncased",
+    "text_id": 0,
+    "token_count": 13,
+    "tokens": [
+      "token",
+      "##ization",
+      "is",
+      "the",
+      "first",
+      "step",
+      "in",
+      "processing",
+      "text",
+      "for",
+      "..."
+    ],
+    "time_ms": 0.4267692565917969
+  },
+  {
+    "model": "t5-base",
+    "text_id": 0,
+    "token_count": 14,
+    "tokens": [
+      "\u2581To",
+      "ken",
+      "ization",
+      "\u2581is",
+      "\u2581the",
+      "\u2581first",
+      "\u2581step",
+      "\u2581in",
+      "\u2581processing",
+      "\u2581text",
+      "..."
+    ],
+    "time_ms": 0.2739429473876953
+  },
+  {
+    "model": "xlm-roberta-base",
+    "text_id": 0,
+    "token_count": 15,
+    "tokens": [
+      "\u2581To",
+      "ken",
+      "ization",
+      "\u2581is",
+      "\u2581the",
+      "\u2581first",
+      "\u2581step",
+      "\u2581in",
+      "\u2581process",
+      "ing",
+      "..."
+    ],
+    "time_ms": 0.13113021850585938
+  },
+  {
+    "model": "gpt2",
+    "text_id": 1,
+    "token_count": 22,
+    "tokens": [
+      "Different",
+      "\u0120models",
+      "\u0120use",
+      "\u0120different",
+      "\u0120token",
+      "ization",
+      "\u0120approaches",
+      ":",
+      "\u0120B",
+      "PE",
+      "..."
+    ],
+    "time_ms": 0.10180473327636719
+  },
+  {
+    "model": "bert-base-uncased",
+    "text_id": 1,
+    "token_count": 19,
+    "tokens": [
+      "different",
+      "models",
+      "use",
+      "different",
+      "token",
+      "##ization",
+      "approaches",
+      ":",
+      "bp",
+      "##e",
+      "..."
+    ],
+    "time_ms": 0.07510185241699219
+  },
+  {
+    "model": "t5-base",
+    "text_id": 1,
+    "token_count": 27,
+    "tokens": [
+      "\u2581Different",
+      "\u2581models",
+      "\u2581use",
+      "\u2581different",
+      "\u2581token",
+      "ization",
+      "\u2581approaches",
+      ":",
+      "\u2581B",
+      "PE",
+      "..."
+    ],
+    "time_ms": 0.15211105346679688
+  },
+  {
+    "model": "xlm-roberta-base",
+    "text_id": 1,
+    "token_count": 24,
+    "tokens": [
+      "\u2581Different",
+      "\u2581models",
+      "\u2581use",
+      "\u2581different",
+      "\u2581to",
+      "ken",
+      "ization",
+      "\u2581approach",
+      "es",
+      ":",
+      "..."
+    ],
+    "time_ms": 0.13208389282226562
+  },
+  {
+    "model": "gpt2",
+    "text_id": 2,
+    "token_count": 42,
+    "tokens": [
+      "Mult",
+      "ilingual",
+      "\u0120models",
+      "\u0120need",
+      "\u0120to",
+      "\u0120handle",
+      "\u0120text",
+      "\u0120in",
+      "\u0120many",
+      "\u0120languages",
+      "..."
+    ],
+    "time_ms": 0.12993812561035156
+  },
+  {
+    "model": "bert-base-uncased",
+    "text_id": 2,
+    "token_count": 38,
+    "tokens": [
+      "multi",
+      "##ling",
+      "##ual",
+      "models",
+      "need",
+      "to",
+      "handle",
+      "text",
+      "in",
+      "many",
+      "..."
+    ],
+    "time_ms": 0.13113021850585938
+  },
+  {
+    "model": "t5-base",
+    "text_id": 2,
+    "token_count": 33,
+    "tokens": [
+      "\u2581Multi",
+      "lingual",
+      "\u2581models",
+      "\u2581need",
+      "\u2581to",
+      "\u2581handle",
+      "\u2581text",
+      "\u2581in",
+      "\u2581many",
+      "\u2581languages",
+      "..."
+    ],
+    "time_ms": 0.1571178436279297
+  },
+  {
+    "model": "xlm-roberta-base",
+    "text_id": 2,
+    "token_count": 27,
+    "tokens": [
+      "\u2581Multi",
+      "lingu",
+      "al",
+      "\u2581models",
+      "\u2581need",
+      "\u2581to",
+      "\u2581handle",
+      "\u2581text",
+      "\u2581in",
+      "\u2581many",
+      "..."
+    ],
+    "time_ms": 0.12993812561035156
+  },
+  {
+    "model": "gpt2",
+    "text_id": 3,
+    "token_count": 17,
+    "tokens": [
+      "Code",
+      "\u0120token",
+      "ization",
+      "\u0120is",
+      "\u0120special",
+      ":",
+      "\u0120def",
+      "\u0120token",
+      "ize",
+      "(",
+      "..."
+    ],
+    "time_ms": 0.07224082946777344
+  },
+  {
+    "model": "bert-base-uncased",
+    "text_id": 3,
+    "token_count": 19,
+    "tokens": [
+      "code",
+      "token",
+      "##ization",
+      "is",
+      "special",
+      ":",
+      "def",
+      "token",
+      "##ize",
+      "(",
+      "..."
+    ],
+    "time_ms": 0.06103515625
+  },
+  {
+    "model": "t5-base",
+    "text_id": 3,
+    "token_count": 21,
+    "tokens": [
+      "\u2581Code",
+      "\u2581token",
+      "ization",
+      "\u2581is",
+      "\u2581special",
+      ":",
+      "\u2581de",
+      "f",
+      "\u2581token",
+      "ize",
+      "..."
+    ],
+    "time_ms": 0.0858306884765625
+  },
+  {
+    "model": "xlm-roberta-base",
+    "text_id": 3,
+    "token_count": 22,
+    "tokens": [
+      "\u2581Code",
+      "\u2581to",
+      "ken",
+      "ization",
+      "\u2581is",
+      "\u2581special",
+      ":",
+      "\u2581de",
+      "f",
+      "\u2581to",
+      "..."
+    ],
+    "time_ms": 0.07772445678710938
+  },
+  {
+    "model": "gpt2",
+    "text_id": 4,
+    "token_count": 21,
+    "tokens": [
+      "URL",
+      "s",
+      "\u0120and",
+      "\u0120special",
+      "\u0120characters",
+      ":",
+      "\u0120https",
+      "://",
+      "example",
+      ".",
+      "..."
+    ],
+    "time_ms": 0.08869171142578125
+  },
+  {
+    "model": "bert-base-uncased",
+    "text_id": 4,
+    "token_count": 24,
+    "tokens": [
+      "ur",
+      "##ls",
+      "and",
+      "special",
+      "characters",
+      ":",
+      "https",
+      ":",
+      "/",
+      "/",
+      "..."
+    ],
+    "time_ms": 0.06794929504394531
+  },
+  {
+    "model": "t5-base",
+    "text_id": 4,
+    "token_count": 25,
+    "tokens": [
+      "\u2581URL",
+      "s",
+      "\u2581and",
+      "\u2581special",
+      "\u2581characters",
+      ":",
+      "\u2581https",
+      "://",
+      "ex",
+      "a",
+      "..."
+    ],
+    "time_ms": 0.14209747314453125
+  },
+  {
+    "model": "xlm-roberta-base",
+    "text_id": 4,
+    "token_count": 26,
+    "tokens": [
+      "\u2581URL",
+      "s",
+      "\u2581and",
+      "\u2581special",
+      "\u2581characters",
+      ":",
+      "\u2581https",
+      "://",
+      "ex",
+      "a",
+      "..."
+    ],
+    "time_ms": 0.08606910705566406
+  },
+  {
+    "model": "gpt2",
+    "text_id": 5,
+    "token_count": 21,
+    "tokens": [
+      "E",
+      "mo",
+      "j",
+      "is",
+      "\u0120are",
+      "\u0120challenging",
+      ":",
+      "\u0120\u00f0\u0141\u013a",
+      "\u012c",
+      "\u0120\u00f0\u0141",
+      "..."
+    ],
+    "time_ms": 0.07581710815429688
+  },
+  {
+    "model": "bert-base-uncased",
+    "text_id": 5,
+    "token_count": 11,
+    "tokens": [
+      "em",
+      "##oj",
+      "##is",
+      "are",
+      "challenging",
+      ":",
+      "[UNK]",
+      "[UNK]",
+      "[UNK]",
+      "[UNK]",
+      "..."
+    ],
+    "time_ms": 0.08511543273925781
+  },
+  {
+    "model": "t5-base",
+    "text_id": 5,
+    "token_count": 16,
+    "tokens": [
+      "\u2581Em",
+      "oji",
+      "s",
+      "\u2581are",
+      "\u2581challenging",
+      ":",
+      "\u2581",
+      "\ud83d\ude0a",
+      "\u2581",
+      "\ud83d\ude80",
+      "..."
+    ],
+    "time_ms": 0.10323524475097656
+  },
+  {
+    "model": "xlm-roberta-base",
+    "text_id": 5,
+    "token_count": 15,
+    "tokens": [
+      "\u2581Emo",
+      "jis",
+      "\u2581are",
+      "\u2581challenging",
+      ":",
+      "\u2581",
+      "\ud83d\ude0a",
+      "\u2581",
+      "\ud83d\ude80",
+      "\u2581",
+      "..."
+    ],
+    "time_ms": 0.15401840209960938
+  }
+]

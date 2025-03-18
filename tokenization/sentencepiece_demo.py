@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
-def train_simple_model(texts, vocab_size=1000, model_type="unigram", model_prefix="sp_model"):
+def train_simple_model(texts, vocab_size=100, model_type="unigram", model_prefix="sp_model"):
     """Train a simple SentencePiece model on the provided texts"""
     # Create a temporary file with the training data
     with tempfile.NamedTemporaryFile(mode="w", delete=False) as f:

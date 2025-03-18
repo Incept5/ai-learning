@@ -1,0 +1,24 @@
+{
+  "spec": "enahnce gp2_demo to show how the base model has not been fine-tuned and can hallucinate as well as lacking data from beyond July 2024",
+  "commitMessage": "Enhanced gp2_demo.py to demonstrate model limitations, hallucinations, and knowledge cutoff",
+  "stats": {
+    "inputTokens": 59087,
+    "cacheWriteTokens": 6266,
+    "cacheReadTokens": 68926,
+    "outputTokens": 5414,
+    "totalTokens": null,
+    "cost": 0.19385325,
+    "currency": "gbp",
+    "processingMillis": 104419,
+    "git": {
+      "filesChanged": 7,
+      "insertions": 529,
+      "deletions": 18,
+      "linesChanged": 529,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}

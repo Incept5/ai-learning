@@ -227,7 +227,7 @@ Different tokenization approaches have different strengths:
 - **Vocabulary size**: Larger vocabularies can represent more words directly but require more parameters
 - **Handling of rare words**: Subword tokenization helps with rare or unseen words
 - **Language support**: Some tokenizers are better for specific languages or multilingual use
-- **Special tokens**: Different models use different special tokens (e.g., [CLS], <s>, etc.)
+- **Special tokens**: Different models use different special tokens (e.g., [CLS], etc.)
 - **Case sensitivity**: Some tokenizers are case-sensitive, others lowercase all text
 
 ## Choosing the Right Tokenizer
