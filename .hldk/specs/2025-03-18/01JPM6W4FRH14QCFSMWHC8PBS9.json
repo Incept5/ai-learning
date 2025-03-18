@@ -1,0 +1,24 @@
+{
+  "spec": "fix this error:\n  File \"/Users/admin/Dev/incept5/ai-learning/embeddings_demo.py\", line 98, in <listcomp>\n    table = [[mixed_examples[i]] + [f\"{n_mixed[i][j]:.3f}\"\n                                       ~~~~~~~^^^\nTypeError: 'int' object is not subscriptable",
+  "commitMessage": "Added embeddings_demo.py to demonstrate sentence similarity using Sentence Transformers. \n\n\n",
+  "stats": {
+    "inputTokens": null,
+    "cacheWriteTokens": 0,
+    "cacheReadTokens": 0,
+    "outputTokens": null,
+    "totalTokens": null,
+    "cost": null,
+    "currency": "gbp",
+    "processingMillis": 95777,
+    "git": {
+      "filesChanged": 1,
+      "insertions": 119,
+      "deletions": 0,
+      "linesChanged": 119,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}
