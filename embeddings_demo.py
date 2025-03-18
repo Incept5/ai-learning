@@ -95,8 +95,17 @@ def main():
 
     # Create similarity table
     header = [""] + mixed_examples
-    table = [[mixed_examples[i]] + [f"{n_mixed[i][j]:.3f}"
-                           for j in range(len(mixed_examples))] for i in range(len(mixed_examples))]
+    
+    # Calculate similarity scores for the table
+    table = []
+    for i in range(n_mixed):
+        row = [mixed_examples[i]]
+        for j in range(n_mixed):
+            emb_i = all_embeddings[start_idx + i]
+            emb_j = all_embeddings[start_idx + j]
+            sim = calculate_similarity(emb_i, emb_j)
+            row.append(f"{sim:.3f}")
+        table.append(row)
 
     print(tabulate(table, headers=header, tablefmt="grid"))
 

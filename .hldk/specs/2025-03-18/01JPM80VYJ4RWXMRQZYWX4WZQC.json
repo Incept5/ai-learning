@@ -1,0 +1,24 @@
+{
+  "spec": "fix this error:\n  File \"/Users/admin/Dev/incept5/ai-learning/embeddings_demo.py\", line 98, in <listcomp>\n    table = [[mixed_examples[i]] + [f\"{n_mixed[i][j]:.3f}\"\n                                       ~~~~~~~^^^\nTypeError: 'int' object is not subscriptable",
+  "commitMessage": "Fix TypeError in embeddings_demo.py: 'int' object is not subscriptable",
+  "stats": {
+    "inputTokens": 33042,
+    "cacheWriteTokens": 6134,
+    "cacheReadTokens": 61340,
+    "outputTokens": 1574,
+    "totalTokens": null,
+    "cost": 0.09205200000000001,
+    "currency": "gbp",
+    "processingMillis": 39176,
+    "git": {
+      "filesChanged": 2,
+      "insertions": 14,
+      "deletions": 5,
+      "linesChanged": 14,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}
