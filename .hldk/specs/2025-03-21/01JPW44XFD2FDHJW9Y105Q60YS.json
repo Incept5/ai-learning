@@ -1,0 +1,24 @@
+{
+  "spec": "For each item being plotted look up the normal ranges for a 58 year old male in 2025 who is a non-smoker, exercises regularly, weighs 73kg and is 175cm tall and plot the lower and higher ranges in the same colour but with dotted lines",
+  "commitMessage": "Added normal ranges for lipid parameters to the heart results plot for a 58-year-old male in 2025",
+  "stats": {
+    "inputTokens": 31562,
+    "cacheWriteTokens": 6307,
+    "cacheReadTokens": 50456,
+    "outputTokens": 2361,
+    "totalTokens": null,
+    "cost": 0.09757575,
+    "currency": "gbp",
+    "processingMillis": 4027084,
+    "git": {
+      "filesChanged": 0,
+      "insertions": 0,
+      "deletions": 0,
+      "linesChanged": 0,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}
