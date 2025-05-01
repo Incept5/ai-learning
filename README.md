@@ -44,8 +44,8 @@ The `embeddings` directory contains demos and examples related to text embedding
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/nlp-llm-learning.git
-   cd nlp-llm-learning
+   git clone https://github.com:Incept5/ai-learning.git
+   cd ai-learning
    ```
 
 2. Create and activate a virtual environment (recommended):
