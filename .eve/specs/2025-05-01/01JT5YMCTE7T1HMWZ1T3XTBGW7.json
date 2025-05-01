@@ -1,0 +1,24 @@
+{
+  "spec": "Add README that describes the project and has links to the sub modules\nAlso describe how to setup and run the examples",
+  "commitMessage": "Add comprehensive README.md with project description and setup instructions",
+  "stats": {
+    "inputTokens": 77486,
+    "cacheWriteTokens": 6303,
+    "cacheReadTokens": 56727,
+    "outputTokens": 2053,
+    "totalTokens": 0,
+    "cost": 0.19743975,
+    "currency": "gbp",
+    "processingMillis": 51073,
+    "git": {
+      "filesChanged": 18,
+      "insertions": 227,
+      "deletions": 14,
+      "linesChanged": 227,
+      "testFilesChanged": 0,
+      "testInsertions": 0,
+      "testDeletions": 0,
+      "testLinesChanged": 0
+    }
+  }
+}
